@@ -33,14 +33,15 @@ jobs:
           playlist_link="https://www.youtube.com/playlist?list=$PLAYLIST_ID"
 
           # Save playlist data in JSON format compatible with Port
-          playlist_json=$(jq -n --arg title "$playlist_title" \
+          playlist_json=$(jq -n --arg id "$PLAYLIST_ID" \
+                              --arg title "$playlist_title" \
                               --arg link "$playlist_link" \
                               --arg description "$playlist_description" \
                               --arg publishedAt "$playlist_published_at" \
                               --arg channelId "$playlist_channel_id" \
                               --arg channelTitle "$playlist_channel_title" \
                               '{
-                                identifier: $PLAYLIST_ID,
+                                identifier: $id,
                                 blueprint: "youtube_playlist",
                                 title: $title,
                                 properties: {
@@ -89,6 +90,7 @@ jobs:
                                --arg likes "$likes" \
                                --arg views "$views" \
                                --arg comments "$comments" \
+                               --arg playlist_id "$PLAYLIST_ID" \
                                '{
                                  identifier: $id,
                                  blueprint: "youtube_video",
@@ -104,7 +106,7 @@ jobs:
                                    comments: $comments
                                  },
                                  relations: {
-                                   playlist: "YOUR_PLAYLIST_ID"
+                                   playlist: $playlist_id
                                  }
                                }')
 
