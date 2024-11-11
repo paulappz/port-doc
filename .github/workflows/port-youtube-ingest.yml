@@ -54,9 +54,11 @@ jobs:
                                 }
                               }')
 
+          # Initialize combined JSON array with the playlist as the first element
+          combined_json=$(jq -n --argjson playlist "$playlist_json" '[$playlist]')
+
           # Fetch video details for each video in the playlist
           video_data=$(curl -s "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=10&playlistId=$PLAYLIST_ID&key=$YOUTUBE_API_KEY")
-          videos_json="[]"
 
           # Function to convert ISO 8601 duration to H:MM:SS format
           convert_duration() {
@@ -110,12 +112,11 @@ jobs:
                                  }
                                }')
 
-            # Add each video JSON to the array of videos
-            videos_json=$(echo $videos_json | jq --argjson video "$video_json" '. + [$video]')
+            # Append each video JSON to the combined JSON array
+            combined_json=$(echo $combined_json | jq --argjson video "$video_json" '. + [$video]')
           done
 
-          # Combine playlist and videos data into a single JSON array for Port
-          combined_json=$(jq -n --argjson playlist "$playlist_json" --argjson videos "$videos_json" '$playlist + $videos')
+          # Save the combined JSON array to the environment variable for Port
           echo $combined_json > port_entities.json
           echo "entities=$(jq -c . port_entities.json)" >> $GITHUB_ENV
 
