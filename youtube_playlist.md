@@ -39,40 +39,94 @@ Define two blueprints in Port: `youtube_playlist` for playlists and `youtube_vid
     "identifier": "youtube_playlist",
     "title": "YouTube Playlist",
     "description": "Blueprint for YouTube Playlist",
+    "icon": "YouTube",
     "schema": {
-        "properties": {
-            "title": { "type": "string", "title": "Playlist Title" },
-            "link": { "type": "string", "title": "Playlist Link" },
-            "description": { "type": "string", "title": "Playlist Description" },
-            "publishedAt": { "type": "string", "title": "Publish Date" },
-            "channelId": { "type": "string", "title": "Channel ID" },
-            "channelTitle": { "type": "string", "title": "Channel Title" },
-            "thumbnails": {
-                "type": "object",
-                "title": "Thumbnails",
-                "properties": {
-                    "default": { "type": "string", "title": "Default Thumbnail" },
-                    "medium": { "type": "string", "title": "Medium Thumbnail" },
-                    "high": { "type": "string", "title": "High Thumbnail" },
-                    "standard": { "type": "string", "title": "Standard Thumbnail" }
-                }
-            },
-            "localized": {
-                "type": "object",
-                "title": "Localized Information",
-                "properties": {
-                    "title": { "type": "string", "title": "Localized Title" },
-                    "description": { "type": "string", "title": "Localized Description" }
-                }
-            }
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Playlist Title",
+          "description": "The title of the YouTube playlist."
         },
-        "required": ["title", "description", "publishedAt", "channelId", "channelTitle"]
+        "link": {
+          "type": "string",
+          "title": "Playlist Link",
+          "format": "url",
+          "description": "The URL link to the YouTube playlist."
+        },
+        "description": {
+          "type": "string",
+          "title": "Playlist Description",
+          "description": "A description of the YouTube playlist."
+        },
+        "publishedAt": {
+          "type": "string",
+          "title": "Publish Date",
+          "format": "date-time",
+          "description": "The date and time when the playlist was published."
+        },
+        "channelId": {
+          "type": "string",
+          "title": "Channel ID",
+          "description": "The ID of the YouTube channel that owns the playlist."
+        },
+        "channelTitle": {
+          "type": "string",
+          "title": "Channel Title",
+          "description": "The title of the YouTube channel that owns the playlist."
+        },
+        "thumbnails": {
+          "type": "object",
+          "title": "Thumbnails",
+          "description": "Various resolution thumbnails for the playlist.",
+          "properties": {
+            "default": {
+              "type": "string",
+              "title": "Default Thumbnail",
+              "description": "URL for the default thumbnail image."
+            },
+            "medium": {
+              "type": "string",
+              "title": "Medium Thumbnail",
+              "description": "URL for the medium-sized thumbnail image."
+            },
+            "high": {
+              "type": "string",
+              "title": "High Thumbnail",
+              "description": "URL for the high-resolution thumbnail image."
+            },
+            "standard": {
+              "type": "string",
+              "title": "Standard Thumbnail",
+              "description": "URL for the standard thumbnail image."
+            }
+          }
+        },
+        "localized": {
+          "type": "object",
+          "title": "Localized Information",
+          "description": "Localized title and description for different regions.",
+          "properties": {
+            "title": {
+              "type": "string",
+              "title": "Localized Title",
+              "description": "The localized title of the playlist."
+            },
+            "description": {
+              "type": "string",
+              "title": "Localized Description",
+              "description": "The localized description of the playlist."
+            }
+          }
+        }
+      },
+      "required": ["title", "description", "publishedAt", "channelId", "channelTitle"]
     },
     "mirrorProperties": {},
     "calculationProperties": {},
     "aggregationProperties": {},
     "relations": {}
-}
+  }
+  
 ```
    </details>
 
@@ -106,47 +160,114 @@ Define two blueprints in Port: `youtube_playlist` for playlists and `youtube_vid
     "identifier": "youtube_video",
     "title": "YouTube Video",
     "description": "Blueprint for YouTube Video",
+    "icon": "YouTube",
     "schema": {
-        "properties": {
-            "title": { "type": "string", "title": "Video Title" },
-            "link": { "type": "string", "title": "Video Link" },
-            "duration": { "type": "string", "title": "Video Duration" },
-            "description": { "type": "string", "title": "Video Description" },
-            "publishedAt": { "type": "string", "title": "Publish Date" },
-            "position": { "type": "number", "title": "Position in Playlist" },
-            "likes": { "type": "number", "title": "Like Count" },
-            "views": { "type": "number", "title": "View Count" },
-            "comments": { "type": "number", "title": "Comment Count" },
-            "thumbnails": {
-                "type": "object",
-                "title": "Thumbnails",
-                "properties": {
-                    "default": { "type": "string", "title": "Default Thumbnail" },
-                    "medium": { "type": "string", "title": "Medium Thumbnail" },
-                    "high": { "type": "string", "title": "High Thumbnail" },
-                    "standard": { "type": "string", "title": "Standard Thumbnail" },
-                    "maxres": { "type": "string", "title": "Max Resolution Thumbnail" }
-                }
-            },
-            "videoOwnerChannelTitle": { "type": "string", "title": "Channel Title" },
-            "videoOwnerChannelId": { "type": "string", "title": "Channel ID" }
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Video Title",
+          "description": "The title of the YouTube video."
         },
-        "required": ["title", "description", "publishedAt", "duration", "link"]
+        "link": {
+          "type": "string",
+          "title": "Video Link",
+          "format": "url",
+          "description": "The URL link to the YouTube video."
+        },
+        "duration": {
+          "type": "string",
+          "title": "Video Duration",
+          "description": "The duration of the YouTube video."
+        },
+        "description": {
+          "type": "string",
+          "title": "Video Description",
+          "description": "A description of the YouTube video."
+        },
+        "publishedAt": {
+          "type": "string",
+          "title": "Publish Date",
+          "format": "date-time",
+          "description": "The date and time when the video was published."
+        },
+        "position": {
+          "type": "number",
+          "title": "Position in Playlist",
+          "description": "The video's position in the playlist."
+        },
+        "likes": {
+          "type": "number",
+          "title": "Like Count",
+          "description": "The number of likes on the video."
+        },
+        "views": {
+          "type": "number",
+          "title": "View Count",
+          "description": "The number of views on the video."
+        },
+        "comments": {
+          "type": "number",
+          "title": "Comment Count",
+          "description": "The number of comments on the video."
+        },
+        "thumbnails": {
+          "type": "object",
+          "title": "Thumbnails",
+          "description": "Various resolution thumbnails for the video.",
+          "properties": {
+            "default": {
+              "type": "string",
+              "title": "Default Thumbnail",
+              "description": "URL for the default thumbnail image."
+            },
+            "medium": {
+              "type": "string",
+              "title": "Medium Thumbnail",
+              "description": "URL for the medium-sized thumbnail image."
+            },
+            "high": {
+              "type": "string",
+              "title": "High Thumbnail",
+              "description": "URL for the high-resolution thumbnail image."
+            },
+            "standard": {
+              "type": "string",
+              "title": "Standard Thumbnail",
+              "description": "URL for the standard thumbnail image."
+            },
+            "maxres": {
+              "type": "string",
+              "title": "Max Resolution Thumbnail",
+              "description": "URL for the maximum resolution thumbnail image."
+            }
+          }
+        },
+        "videoOwnerChannelTitle": {
+          "type": "string",
+          "title": "Channel Title",
+          "description": "The title of the channel that owns the video."
+        },
+        "videoOwnerChannelId": {
+          "type": "string",
+          "title": "Channel ID",
+          "description": "The ID of the channel that owns the video."
+        }
+      },
+      "required": ["title", "description", "publishedAt", "duration", "link"]
     },
     "mirrorProperties": {},
     "calculationProperties": {},
     "aggregationProperties": {},
     "relations": {
-        "playlist": {
-            "title": "Playlist",
-            "many": false,
-            "target": "youtube_playlist",
-            "required": true
-        }
+      "playlist": {
+        "title": "Playlist",
+        "many": false,
+        "target": "youtube_playlist",
+        "required": true
+      }
     }
-}
-
-
+  }
+  
 ```
    </details>
 
@@ -183,8 +304,8 @@ name: Update YouTube Playlist and Video Entities in Port
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight
+  push:
+    branches: [ main ]  
 
 jobs:
   update_port_entities:
@@ -193,250 +314,133 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          sudo apt-get update
+          sudo apt-get install -y jq
 
-      - name: Run YouTube Data Fetch and Prepare Port Entities
+      - name: Fetch YouTube Playlist and Video Data
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-        run: python fetch_youtube_data.py
+        run: |
+          PLAYLIST_ID="PL5ErBr2d3QJH0kbwTQ7HSuzvBb4zIWzhy"
+          
+          # Fetch playlist details
+          playlist_response=$(curl -s "https://youtube.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&id=$PLAYLIST_ID&key=$YOUTUBE_API_KEY")
+          playlist_title=$(echo $playlist_response | jq -r '.items[0].snippet.title')
+          playlist_description=$(echo $playlist_response | jq -r '.items[0].snippet.description // "No description available"')
+          playlist_published_at=$(echo $playlist_response | jq -r '.items[0].snippet.publishedAt')
+          playlist_channel_id=$(echo $playlist_response | jq -r '.items[0].snippet.channelId')
+          playlist_channel_title=$(echo $playlist_response | jq -r '.items[0].snippet.channelTitle')
+          playlist_link="https://www.youtube.com/playlist?list=$PLAYLIST_ID"
+
+          # Save playlist data in JSON format compatible with Port
+          playlist_json=$(jq -n --arg id "$PLAYLIST_ID" \
+                              --arg title "$playlist_title" \
+                              --arg link "$playlist_link" \
+                              --arg description "$playlist_description" \
+                              --arg publishedAt "$playlist_published_at" \
+                              --arg channelId "$playlist_channel_id" \
+                              --arg channelTitle "$playlist_channel_title" \
+                              '{
+                                identifier: $id,
+                                blueprint: "youtube_playlist",
+                                title: $title,
+                                properties: {
+                                  title: $title,
+                                  link: $link,
+                                  description: $description,
+                                  publishedAt: $publishedAt,
+                                  channelId: $channelId,
+                                  channelTitle: $channelTitle
+                                }
+                              }')
+
+          # Initialize combined JSON array with the playlist as the first element
+          combined_json=$(jq -n --argjson playlist "$playlist_json" '[$playlist]')
+
+          # Fetch video details for each video in the playlist
+          video_data=$(curl -s "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=10&playlistId=$PLAYLIST_ID&key=$YOUTUBE_API_KEY")
+
+          # Function to convert ISO 8601 duration to H:MM:SS format
+          convert_duration() {
+            local duration=$1
+            local hours=$(echo $duration | grep -oP '(?<=PT)(\d+)H' | grep -oP '\d+')
+            local minutes=$(echo $duration | grep -oP '(?<=T|\d)M' | grep -oP '\d+')
+            local seconds=$(echo $duration | grep -oP '(?<=M|\d)S' | grep -oP '\d+')
+            printf "%s:%02d:%02d" "${hours:-0}" "${minutes:-0}" "${seconds:-0}"
+          }
+
+          # Loop through each video, gather details, and format JSON for Port
+          for video_id in $(echo $video_data | jq -r '.items[].contentDetails.videoId'); do
+            video_response=$(curl -s "https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&id=$video_id&key=$YOUTUBE_API_KEY")
+
+            title=$(echo $video_response | jq -r '.items[0].snippet.title')
+            description=$(echo $video_response | jq -r '.items[0].snippet.description // "No description available"')
+            publishedAt=$(echo $video_response | jq -r '.items[0].snippet.publishedAt')
+            raw_duration=$(echo $video_response | jq -r '.items[0].contentDetails.duration')
+            duration=$(convert_duration $raw_duration)
+            likes=$(echo $video_response | jq -r '.items[0].statistics.likeCount // 0')
+            views=$(echo $video_response | jq -r '.items[0].statistics.viewCount // 0')
+            comments=$(echo $video_response | jq -r '.items[0].statistics.commentCount // 0')
+            link="https://www.youtube.com/watch?v=$video_id"
+
+            video_json=$(jq -n --arg id "$video_id" \
+                               --arg title "$title" \
+                               --arg link "$link" \
+                               --arg description "$description" \
+                               --arg publishedAt "$publishedAt" \
+                               --arg duration "$duration" \
+                               --arg likes "$likes" \
+                               --arg views "$views" \
+                               --arg comments "$comments" \
+                               --arg playlist_id "$PLAYLIST_ID" \
+                               '{
+                                 identifier: $id,
+                                 blueprint: "youtube_video",
+                                 title: $title,
+                                 properties: {
+                                   title: $title,
+                                   link: $link,
+                                   description: $description,
+                                   publishedAt: $publishedAt,
+                                   duration: $duration,
+                                   likes: $likes,
+                                   views: $views,
+                                   comments: $comments
+                                 },
+                                 relations: {
+                                   playlist: $playlist_id
+                                 }
+                               }')
+
+            # Append each video JSON to the combined JSON array
+            combined_json=$(echo $combined_json | jq --argjson video "$video_json" '. + [$video]')
+          done
+
+          # Save the combined JSON array to the environment variable for Port
+          echo $combined_json > port_entities.json
+          echo "entities=$(jq -c . port_entities.json)" >> $GITHUB_ENV
 
       - name: Bulk Create/Update YouTube Playlist and Video Entities in Port
         uses: port-labs/port-github-action@v1
         with:
-          clientId: ${{ secrets.CLIENT_ID }}
-          clientSecret: ${{ secrets.CLIENT_SECRET }}
+          clientId: ${{ secrets.PORT_CLIENT_ID }}
+          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
           baseUrl: https://api.getport.io
           operation: BULK_UPSERT
-          entities: ${{ toJson(fromJson(file('port_entities.json'))) }}
+          entities: ${{ env.entities }}
+
 ```
 
 ---
-
-### Fetch YouTube Data
-
-The `fetch_youtube_data.py` script retrieves YouTube data and prepares it in the required JSON format.
-
-```python
-import requests
-import json
-from googleapiclient.discovery import build
-import os
-import logging
-from dotenv import load_dotenv
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-load_dotenv()
-
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
-PLAYLIST_ID = "YOUR_PLAYLIST_ID"
-
-def fetch_youtube_playlist_data(api_key, playlist_id):
-    youtube = build("youtube", "v3", developerKey=api_key)
-    videos = []
-    # Additional logic to fetch video details
-    # ...
-    return videos
-
-def fetch_youtube_playlist_info(api_key, playlist_id):
-    youtube = build("youtube", "v3", developerKey=api_key)
-    request = youtube.playlists().list(
-        part="snippet",
-        id=playlist_id
-    )
-    # Additional logic to fetch playlist details
-    # ...
-    return {
-        "identifier": playlist_id,
-        "blueprint": "youtube_playlist",
-        # Additional playlist props
-        # ...
-    }
-
-def main():
-    playlist_data = fetch_youtube_playlist_info(YOUTUBE_API_KEY, PLAYLIST_ID)
-    videos_data = fetch_youtube_playlist_data(YOUTUBE_API_KEY, PLAYLIST_ID)
-    # Combine Playlist and Video data for BULK_UPSERT
-    all_data = [playlist_data] + videos_data
-    with open("port_entities.json", "w") as f:
-        json.dump(all_data, f, indent=4)
-    logging.info("Fetched YouTube data and saved to port_entities.json")
-
-if __name__ == "__main__":
-    main()
-```
----
-
-   <details>
-     <summary>Fetch YouTube Data complete implementation (click to expand)</summary>
-     
-```python showLineNumbers
-import requests
-import json
-from googleapiclient.discovery import build
-import os
-import logging
-from dotenv import load_dotenv
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-
-load_dotenv()  # Load environment variables from .env file
-
-# Client credentials
-YOUTUBE_API_KEY = os.getenv("YOUTUBE_API_KEY")
-
-# YouTube playlist details
-PLAYLIST_ID = "YOUR_PLAYLIST_ID"
-
-def fetch_youtube_playlist_data(api_key, playlist_id):
-    youtube = build("youtube", "v3", developerKey=api_key)
-    videos = []
-    next_page_token = None
-
-    while True:
-        playlist_request = youtube.playlistItems().list(
-            part="snippet,contentDetails", playlistId=playlist_id, maxResults=10, pageToken=next_page_token
-        )
-        playlist_response = playlist_request.execute()
-        
-        for item in playlist_response["items"]:
-            video_id = item["contentDetails"]["videoId"]
-            
-            # Fetch additional video details including duration, likes, views, and comments
-            video_request = youtube.videos().list(
-                part="contentDetails,statistics",
-                id=video_id
-            )
-            video_response = video_request.execute()
-            video_details = video_response["items"][0]
-            duration = video_details["contentDetails"]["duration"]
-            likes = int(video_details["statistics"].get("likeCount", 0))
-            views = int(video_details["statistics"].get("viewCount", 0))
-            comments = int(video_details["statistics"].get("commentCount", 0))
-
-            title = item["snippet"]["title"]
-            description = item["snippet"]["description"]
-            publishedAt = item["snippet"]["publishedAt"]
-            position = item["snippet"].get("position", None)
-            thumbnails = item["snippet"]["thumbnails"]
-            videoOwnerChannelTitle = item["snippet"].get("videoOwnerChannelTitle", "")
-            videoOwnerChannelId = item["snippet"].get("videoOwnerChannelId", "")
-            video_link = f"https://www.youtube.com/watch?v={video_id}"
-
-            videos.append({
-                "identifier": video_id,
-                "blueprint": "youtube_video",
-                "properties": {
-                    "title": title,
-                    "duration": duration,
-                    "link": video_link,
-                    "description": description,
-                    "publishedAt": publishedAt,
-                    "position": position,
-                    "likes": likes,
-                    "views": views,
-                    "comments": comments,
-                    "thumbnails": {
-                        "default": thumbnails["default"]["url"],
-                        "medium": thumbnails["medium"]["url"],
-                        "high": thumbnails["high"]["url"],
-                        "standard": thumbnails.get("standard", {}).get("url")
-                    },
-                    "videoOwnerChannelTitle": videoOwnerChannelTitle,
-                    "videoOwnerChannelId": videoOwnerChannelId
-                },
-                "relations": {
-                    "playlist": playlist_id
-                }
-            })
-
-        next_page_token = playlist_response.get("nextPageToken")
-        if not next_page_token:
-            break
-
-    return videos
-
-def fetch_youtube_playlist_info(api_key, playlist_id):
-    youtube = build("youtube", "v3", developerKey=api_key)
-    request = youtube.playlists().list(
-        part="snippet,contentDetails",
-        id=playlist_id
-    )
-    response = request.execute()
-    item = response["items"][0]
-    
-    title = item["snippet"].get("title", "No Title")
-    description = item["snippet"].get("description", "").strip() or "No description available"
-    published_at = item["snippet"].get("publishedAt", "")
-    channel_id = item["snippet"].get("channelId", "")
-    channel_title = item["snippet"].get("channelTitle", "")
-    thumbnails = item["snippet"].get("thumbnails", {})
-    playlist_link = f"https://www.youtube.com/playlist?list={playlist_id}"
-    
-    localized_title = item["snippet"]["localized"].get("title", "No Localized Title")
-    localized_description = item["snippet"]["localized"].get("description", "No Localized Description")
-
-    return {
-        "identifier": playlist_id,
-        "blueprint": "youtube_playlist",
-        "properties": {
-            "title": title,
-            "link": playlist_link,
-            "description": description,
-            "publishedAt": published_at,
-            "channelId": channel_id,
-            "channelTitle": channel_title,
-            "thumbnails": {
-                "default": thumbnails.get("default", {}).get("url", ""),
-                "medium": thumbnails.get("medium", {}).get("url", ""),
-                "high": thumbnails.get("high", {}).get("url", ""),
-                "standard": thumbnails.get("standard", {}).get("url", "")
-            },
-            "localized": {
-                "title": localized_title,
-                "description": localized_description
-            }
-        }
-    }
-
-def main():
-    playlist_data = fetch_youtube_playlist_info(YOUTUBE_API_KEY, PLAYLIST_ID)
-    videos_data = fetch_youtube_playlist_data(YOUTUBE_API_KEY, PLAYLIST_ID)
-    
-    # Combine Playlist and Video data for BULK_UPSERT
-    all_data = [playlist_data] + videos_data
-    with open("port_entities.json", "w") as f:
-        json.dump(all_data, f, indent=4)
-    logging.info("Fetched YouTube data and saved to port_entities.json")
-
-if __name__ == "__main__":
-    main()
-
-```
-   </details>
-
----
-
 
 ### Explanation of Workflow Steps
 
-1. **Check out the code**: Retrieves the repository code.
-2. **Set up Python**: Configures Python 3.9 environment.
-3. **Install dependencies**: Installs required packages from `requirements.txt`.
-4. **Run YouTube Data Fetch**: Runs `fetch_youtube_data.py` to retrieve YouTube data and prepare it for Port ingestion.
-5. **Bulk Create/Update Entities**: Uses Port’s GitHub action to bulk upsert the playlist and video data.
-
+1. **Check out the code**: Retrieves the repository code from GitHub.
+2. **Install dependencies**: Installs `jq`, a tool for JSON processing, to handle YouTube API responses directly in the workflow.
+3. **Fetch YouTube Data and Prepare for Port**: Uses `curl` to retrieve YouTube playlist and video data, parses the data using `jq`, and converts it into JSON format compatible with Port’s data model.
+4. **Bulk Create/Update Entities**: Uses Port’s GitHub action to bulk upsert the combined playlist and video data into Port.
 
 
 Here’s an example of what you would see on Port calatog when Playlist and Video data has been injected. 
