@@ -128,3 +128,25 @@ jobs:
           baseUrl: https://api.getport.io
           operation: BULK_UPSERT
           entities: ${{ env.entities }}
+
+
+      - name: Report Status to Port
+        if: always()
+        uses: port-labs/port-github-action@v1
+        with:
+          clientId: ${{ secrets.PORT_CLIENT_ID }}
+          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
+          baseUrl: https://api.getport.io
+          operation: PATCH_RUN
+          entities: |
+            [
+              {
+                "identifier": "youtube_ingest_status",
+                "blueprint": "workflow_status",
+                "properties": {
+                  "status": "${{ job.status }}",
+                  "timestamp": "${{ steps.update_port_entities.completed_at }}",
+                  "details": "YouTube playlist and videos ingestion completed with status: ${{ job.status }}"
+                }
+              }
+            ]
