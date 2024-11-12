@@ -5,7 +5,7 @@
     "icon": "YouTube",
     "schema": {
       "properties": {
-        "title": {
+        "title": { 
           "type": "string",
           "title": "Video Title",
           "description": "The title of the YouTube video."

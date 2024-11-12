@@ -3,7 +3,7 @@
 
 This guide will help you set up an automated process to catalog YouTube playlist and video data into Port. Using Port's GitHub action, you’ll fetch YouTube data and ingest it into Port for easy tracking and visualization.
 
-## Prerequisites
+## Prerequisites 
 
 1. [Create a Port account](https://app.getport.io) and set up API credentials.
 2. [Obtain a YouTube Data API Key](https://console.cloud.google.com/apis/credentials).

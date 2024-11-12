@@ -133,7 +133,7 @@ jobs:
           operation: BULK_UPSERT
           entities: ${{ env.entities }}
 
-      - name: Inform completion of request to Create / Update Catalog in Port
+      - name: Inform completion of request to Create / Update Catalog in Port 
         uses: port-labs/port-github-action@v1
         with:
           clientId: ${{ secrets.PORT_CLIENT_ID }}

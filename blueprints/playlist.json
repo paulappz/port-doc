@@ -4,7 +4,7 @@
     "description": "Blueprint for YouTube Playlist",
     "icon": "YouTube",
     "schema": {
-      "properties": {
+      "properties": { 
         "title": {
           "type": "string",
           "title": "Playlist Title",
