@@ -1,11 +1,9 @@
 name: Update YouTube Playlist and Video Entities in Port
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Automate to run daily at midnight
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ main ]  
 
 jobs:
   update_port_entities:
@@ -130,22 +128,3 @@ jobs:
           baseUrl: https://api.getport.io
           operation: BULK_UPSERT
           entities: ${{ env.entities }}
-
-      - name: Report Status to Port
-        if: always()
-        uses: port-labs/port-github-action@v1
-        with:
-          clientId: ${{ secrets.PORT_CLIENT_ID }}
-          clientSecret: ${{ secrets.PORT_CLIENT_SECRET }}
-          baseUrl: https://api.getport.io
-          operation: CREATE
-          entityData: |
-            {
-              "identifier": "youtube_ingest_status",
-              "blueprint": "workflow_status",
-              "properties": {
-                "status": "${{ job.status }}",
-                "timestamp": "${{ steps.update_port_entities.completed_at }}",
-                "details": "YouTube playlist and videos ingestion completed with status: ${{ job.status }}"
-              }
-            }
