@@ -715,7 +715,7 @@ By leveraging Port's Dashboards, you can create custom dashboards to do the foll
 3. Select **New dashboard**.
 4. Name the dashboard ( Visualise Youtube Playlist ), choose an icon if desired, and click `Create`.
 
-# Creating a Dashboard in Port
+### Creating a Dashboard in Port
 
 If you followed through with the dashboard setup, you will have created a new empty dashboard as seen in the last image. Let's get ready to add widgets.
 
