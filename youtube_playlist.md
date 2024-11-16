@@ -731,13 +731,12 @@ Let's create a widget that displays the number of videos in a YouTube playlist.
 3. Description: `Shows the number of videos on the playlist` (optional).
 4. Select `Count entities` for the **Chart type**.
 5. Choose **YouTube Video** as the **Blueprint**.
-6. Select `count` for the **Function**.
+6. Select `count` for the **Function**.  
+7. Click `Save`.
 
     <center>
     <img src="/img/video_counts.png" border="1px" />
     </center>
-  
-7. Click `Save`.
 
 </details>
 
@@ -758,12 +757,12 @@ You can also create other widgets to display additional data about your YouTube 
 6. Select `Like Count` for the **Property**.
 6. Select `Average` for the **Function**.
 7. Select `total` for the **Average of**.
+8. Click `Save`.
 
     <center>
     <img src="/img/average_likes.png" border="1px" />
     </center>
   
-7. Click `Save`.
 
 </details>
 
@@ -778,13 +777,13 @@ You can also create other widgets to display additional data about your YouTube 
 4. Select `Agregate by property` for the **Chart type**.
 5. Choose **YouTube Video** as the **Blueprint**.
 6. Select `View Count` for the **Property**.
-6. Select `Sum` for the **Function**.
+7. Select `Sum` for the **Function**.
+8. Click `Save`.
 
     <center>
     <img src="/img/total_views.png" border="1px" />
     </center>
   
-7. Click `Save`.
 
 </details>
 
