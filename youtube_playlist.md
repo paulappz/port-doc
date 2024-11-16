@@ -505,7 +505,7 @@ The following GitHub workflow automates fetching data from YouTube and updating 
 
 ```
 
-<details>
+</details>
 
 3. Define Workflow in YAML
 
